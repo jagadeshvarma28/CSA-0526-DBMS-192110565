@@ -1,0 +1,93 @@
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 61
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use varma;
+Database changed
+mysql> desc student;
++------------+----------+------+-----+---------+-------+
+| Field      | Type     | Null | Key | Default | Extra |
++------------+----------+------+-----+---------+-------+
+| Std_ID     | int(5)   | NO   | PRI | 0       |       |
+| std_Name   | char(20) | YES  |     | NULL    |       |
+| Gender     | char(5)  | YES  | UNI | NULL    |       |
+| Phone      | int(15)  | YES  |     | NULL    |       |
+| DOB        | date     | YES  |     | NULL    |       |
+| Department | char(20) | YES  |     | NULL    |       |
++------------+----------+------+-----+---------+-------+
+6 rows in set (0.02 sec)
+
+mysql> select * from student;
++--------+----------+--------+----------+------------+------------+
+| Std_ID | std_Name | Gender | Phone    | DOB        | Department |
++--------+----------+--------+----------+------------+------------+
+|    123 | Raghu    | M      |  9182571 | 2002-08-10 | 2          |
+|    143 | Ram      | N      | 77025274 | 2003-04-09 | 1          |
+|    153 | Ruchi    | F      | 78935384 | 2005-06-25 | 3          |
++--------+----------+--------+----------+------------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select Std_ID,std_Name from student where std_Name IN(select std_Name from student where Gender + "m");
+Empty set, 18 warnings (0.00 sec)
+
+mysql> select Std_ID,std_Name from student where std_Name IN(select std_Name from student where Gender = "m");
++--------+----------+
+| Std_ID | std_Name |
++--------+----------+
+|    123 | Raghu    |
++--------+----------+
+1 row in set (0.01 sec)
+
+mysql> desc test;
++-------+----------+------+-----+---------+-------+
+| Field | Type     | Null | Key | Default | Extra |
++-------+----------+------+-----+---------+-------+
+| id    | int(3)   | YES  |     | NULL    |       |
+| name  | char(20) | YES  |     | NULL    |       |
++-------+----------+------+-----+---------+-------+
+2 rows in set (0.02 sec)
+
+mysql> insert into test (id,name) select Std_ID,std_Name from student where Phone ='77025274';
+Query OK, 1 row affected (0.00 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> select * from test;
++------+------+
+| id   | name |
++------+------+
+|  143 | Ram  |
++------+------+
+1 row in set (0.00 sec)
+
+mysql> select Std_ID,(select Name from student1 where Std_ID=153)as std_Name,Gender,Phone,DOB,Department from student wher Std_ID=153;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Std_ID=153' at line 1
+mysql> select Std_ID,(select std_Name from student1 where Std_ID=153)as std_Name,Gender,Phone,DOB,Department from student wher Std_ID=153;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Std_ID=153' at line 1
+mysql> select * from test;
++------+------+
+| id   | name |
++------+------+
+|  143 | Ram  |
++------+------+
+1 row in set (0.00 sec)
+
+mysql> select Std_ID,(select std_Name from student1 where Std_ID=153)as std_Name,Gender,Phone,DOB,Department from student where Std_ID=153;
+ERROR 1146 (42S02): Table 'varma.student1' doesn't exist
+mysql> select Std_ID,(select std_Name from student where Std_ID=153)as std_Name,Gender,Phone,DOB,Department from student where Std_ID=153;
++--------+----------+--------+----------+------------+------------+
+| Std_ID | std_Name | Gender | Phone    | DOB        | Department |
++--------+----------+--------+----------+------------+------------+
+|    153 | Ruchi    | F      | 78935384 | 2005-06-25 | 3          |
++--------+----------+--------+----------+------------+------------+
+1 row in set (0.00 sec)
+
+mysql>
