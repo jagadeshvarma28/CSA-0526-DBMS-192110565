@@ -5,5 +5,5 @@
 # Exp_2
 [sqlqueries]https://github.com/jagadeshvarma28/CSA-0526-DBMS-192110565/blob/main/db_exp_2.txt
 
-#Exp_3
+# Exp_3
 [sqlqueries]https://github.com/jagadeshvarma28/CSA-0526-DBMS-192110565/blob/main/db_exp_3.txt
