@@ -17,3 +17,5 @@
 [sqlqueris]https://github.com/jagadeshvarma28/CSA-0526-DBMS-192110565/blob/main/db_exp_8.txt
 # Exp_9
 [sqlqueries]https://github.com/jagadeshvarma28/CSA-0526-DBMS-192110565/blob/main/db_exp_9.txt
+# Exp_10
+[sqlqueris]https://github.com/jagadeshvarma28/CSA-0526-DBMS-192110565/blob/main/db_exp_10.txt
