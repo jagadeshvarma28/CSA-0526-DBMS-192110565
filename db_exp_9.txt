@@ -1,0 +1,96 @@
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 63
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use varma;
+Database changed
+mysql> desc student;
++------------+----------+------+-----+---------+-------+
+| Field      | Type     | Null | Key | Default | Extra |
++------------+----------+------+-----+---------+-------+
+| Std_ID     | int(5)   | NO   | PRI | 0       |       |
+| std_Name   | char(20) | YES  |     | NULL    |       |
+| Gender     | char(5)  | YES  | UNI | NULL    |       |
+| Phone      | int(15)  | YES  |     | NULL    |       |
+| DOB        | date     | YES  |     | NULL    |       |
+| Department | char(20) | YES  |     | NULL    |       |
++------------+----------+------+-----+---------+-------+
+6 rows in set (0.02 sec)
+
+mysql> select * from student;
++--------+----------+--------+----------+------------+------------+
+| Std_ID | std_Name | Gender | Phone    | DOB        | Department |
++--------+----------+--------+----------+------------+------------+
+|    123 | Raghu    | M      |  9182571 | 2002-08-10 | 2          |
+|    143 | Ram      | N      | 77025274 | 2003-04-09 | 1          |
+|    153 | Ruchi    | F      | 78935384 | 2005-06-25 | 3          |
++--------+----------+--------+----------+------------+------------+
+3 rows in set (0.00 sec)
+
+mysql> 1234@
+    ->
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1234@' at line 1
+mysql> create table msub(subid int(5),subname varchar(20),rollno int(10));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert msub value(1,"DBMS",0565);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert msub value(2,"physics",0296);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert msub value(2,"physics",0592);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> update msub set subid=3,wher roppno=0573;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'roppno=0573' at line 1
+mysql> select * from dept;
+ERROR 1146 (42S02): Table 'varma.dept' doesn't exist
+mysql> select * from msub;
++-------+---------+--------+
+| subid | subname | rollno |
++-------+---------+--------+
+|     1 | DBMS    |    565 |
+|     2 | physics |    296 |
+|     2 | physics |    592 |
++-------+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> update msub set subname="chemistry"where rollno=296;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from msub;
++-------+-----------+--------+
+| subid | subname   | rollno |
++-------+-----------+--------+
+|     1 | DBMS      |    565 |
+|     2 | chemistry |    296 |
+|     2 | physics   |    592 |
++-------+-----------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select subid,subname from msub,student where student.Std_ID=msub.rollno;
+Empty set (0.00 sec)
+
+mysql> select subid,subname from msub where subid=2;
++-------+-----------+
+| subid | subname   |
++-------+-----------+
+|     2 | chemistry |
+|     2 | physics   |
++-------+-----------+
+2 rows in set (0.00 sec)
+
+mysql>
+
