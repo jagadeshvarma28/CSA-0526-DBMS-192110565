@@ -19,5 +19,9 @@
 [sqlqueries]https://github.com/jagadeshvarma28/CSA-0526-DBMS-192110565/blob/main/db_exp_9.txt
 # Exp_10
 [sqlqueris]https://github.com/jagadeshvarma28/CSA-0526-DBMS-192110565/blob/main/db_exp_10.txt
-# Exp _11
+# Exp_11
 [sqlqueries]https://github.com/jagadeshvarma28/CSA-0526-DBMS-192110565/blob/main/db_exp_11.txt
+
+
+# Exp_13
+[sqlqueries]https://github.com/jagadeshvarma28/CSA-0526-DBMS-192110565/blob/main/db_exp_13.txt
