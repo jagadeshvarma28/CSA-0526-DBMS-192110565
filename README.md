@@ -41,3 +41,5 @@
 [sqlsueries]https://github.com/jagadeshvarma28/CSA-0526-DBMS-192110565/blob/main/db_exp_20.txt
 # Exp_21
 [sqlqueries]https://github.com/jagadeshvarma28/CSA-0526-DBMS-192110565/blob/main/db_exp_21.txt
+# Exp
+[sqlqueries]https://github.com/jagadeshvarma28/CSA-0526-DBMS-192110565/blob/main/db_exp_22.txt
