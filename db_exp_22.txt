@@ -1,0 +1,58 @@
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 99
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use varma;
+Database changed
+mysql> create table bookpublisher(bookid int(45),bookname char(45),author char(45),customer char(45));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc bookpublisher;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| bookid   | int(45)  | YES  |     | NULL    |       |
+| bookname | char(45) | YES  |     | NULL    |       |
+| author   | char(45) | YES  |     | NULL    |       |
+| customer | char(45) | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql> create table custmor(custmorname char(90),curstorid int(44),custmoraddress char(80));
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> desc custmor;
++----------------+----------+------+-----+---------+-------+
+| Field          | Type     | Null | Key | Default | Extra |
++----------------+----------+------+-----+---------+-------+
+| custmorname    | char(90) | YES  |     | NULL    |       |
+| curstorid      | int(44)  | YES  |     | NULL    |       |
+| custmoraddress | char(80) | YES  |     | NULL    |       |
++----------------+----------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into custmor values('ramayana',333,'nellore'),('DBMS',66,'saveetha nagar');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from custmor;
++-------------+-----------+----------------+
+| custmorname | curstorid | custmoraddress |
++-------------+-----------+----------------+
+| ramayana    |       333 | nellore        |
+| DBMS        |        66 | saveetha nagar |
++-------------+-----------+----------------+
+2 rows in set (0.00 sec)
+
+mysql>
+
+
