@@ -37,7 +37,7 @@
 
 # Exp_19
 [sqlqueries]https://github.com/jagadeshvarma28/CSA-0526-DBMS-192110565/blob/main/db_exp_19.txt
-
-
+# Exp_20
+[sqlsueries]https://github.com/jagadeshvarma28/CSA-0526-DBMS-192110565/blob/main/db_exp_20.txt
 # Exp_21
 [sqlqueries]https://github.com/jagadeshvarma28/CSA-0526-DBMS-192110565/blob/main/db_exp_21.txt
