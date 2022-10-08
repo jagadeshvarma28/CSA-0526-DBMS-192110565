@@ -1,0 +1,79 @@
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 88
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> desc person;
+ERROR 1046 (3D000): No database selected
+mysql> use varma;
+Database changed
+mysql> desc person;
++-------------+----------+------+-----+---------+-------+
+| Field       | Type     | Null | Key | Default | Extra |
++-------------+----------+------+-----+---------+-------+
+| person_ID   | int(4)   | NO   | PRI | 0       |       |
+| person_name | char(10) | YES  |     | NULL    |       |
+| gender      | char(4)  | YES  |     | NULL    |       |
+| phone       | int(15)  | YES  |     | NULL    |       |
++-------------+----------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> create user aaa;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> grant all on persons to aaa;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show grants for aaa;
++--------------------------------------------------------+
+| Grants for aaa@%                                       |
++--------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'aaa'@'%'                        |
+| GRANT ALL PRIVILEGES ON `varma`.`persons` TO 'aaa'@'%' |
++--------------------------------------------------------+
+2 rows in set (0.01 sec)
+
+mysql> revoke all on persons from aaa;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show grants for aaa;
++---------------------------------+
+| Grants for aaa@%                |
++---------------------------------+
+| GRANT USAGE ON *.* TO 'aaa'@'%' |
++---------------------------------+
+1 row in set (0.00 sec)
+
+mysql> grant select,update on person to aaa;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show grants for aaa;
++-------------------------------------------------------+
+| Grants for aaa@%                                      |
++-------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'aaa'@'%'                       |
+| GRANT SELECT, UPDATE ON `varma`.`person` TO 'aaa'@'%' |
++-------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> revoke update on person from aaa;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show grants for aaa;
++-----------------------------------------------+
+| Grants for aaa@%                              |
++-----------------------------------------------+
+| GRANT USAGE ON *.* TO 'aaa'@'%'               |
+| GRANT SELECT ON `varma`.`person` TO 'aaa'@'%' |
++-----------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql>
