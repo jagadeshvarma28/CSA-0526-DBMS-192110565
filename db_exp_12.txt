@@ -1,0 +1,40 @@
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 108
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use varma;
+Database changed
+mysql> DELIMITER //
+mysql> CREATE PROCEDURE movie_loop()
+    -> BEGIN
+    -> DECLARE num INT default 1;
+    -> DECLARE res Varchar(50) default ' ';
+    -> while num < 50000 DO
+    -> set res=CONCAT(res,num,',');
+    -> set num=num*4;
+    -> END While;
+    -> SELECT res;
+    -> END //
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> call movie_loop();
+    -> //
++---------------------------------+
+| res                             |
++---------------------------------+
+|  1,4,16,64,256,1024,4096,16384, |
++---------------------------------+
+1 row in set (0.01 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql>
